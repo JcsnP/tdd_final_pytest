@@ -2,7 +2,8 @@
 '''
   ot ชั่วโมงละ 60
   แต่ทำได้ไม่เกิน 3
-  ot วันนึงได้ไม่เกิน 180
+  ot วันนึงได้ไม่เกิน 180 ชั่วโมง
+  เดือนนึง (31) วันได้ไม่เกิน 93 ชั่วโมง
 
   และหากในเดือนนึงไม่มาสายเลยจะได้เพิ่มเดือนละ 1000
 
@@ -11,19 +12,23 @@
 '''
 
 def validate_input(working_day, total_ot, late_day):
-  # if total ot more than working hour
-  if working_day > 31 or working_day < 0:
-    return "invalid day"
-  elif total_ot < 0:
-    return "invalid total ot"
-  elif late_day < 0 or late_day > 31:
-    return "invalid late day"
-  elif total_ot > working_day * 3:
-    return "number of OTs above threshold per day"
-  elif working_day == 0 and total_ot == 0:
-    return "invalid all inputs"
+  # if input is str
+  if type(working_day) == int and type(total_ot) == int and type(late_day) == int:
+    # if total ot more than working hour
+    if working_day > 31 or working_day < 0:
+      return "invalid day"
+    elif total_ot < 0:
+      return "invalid total ot"
+    elif late_day < 0 or late_day > 31:
+      return "invalid late day"
+    elif total_ot > working_day * 3:
+      return "number of OTs above threshold per day"
+    elif working_day == 0 and total_ot == 0:
+      return "invalid all inputs"
+    else:
+      return True
   else:
-    return True
+    return "please input as integet"
 
 def calculate_salary(working_day, total_ot, late_day):
   # validate input
