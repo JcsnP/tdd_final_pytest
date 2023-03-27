@@ -176,6 +176,16 @@ def test_working_day_0_total_ot_0_late_day_0():
   actual_result = calculate_salary(working_day, total_ot, late_day)
   assert expected_result == actual_result
 
+# late day > working day
+@pytest.mark.validate
+def test_working_day_31_total_ot_0_late_day_31():
+  working_day = 31
+  total_ot = 0
+  late_day = 31
+  expected_result = 10540
+  actual_result = calculate_salary(working_day, total_ot, late_day)
+  assert expected_result == actual_result
+
 # normal test
 @pytest.mark.display
 def test_working_day_minus_1_total_ot_minus_1_late_day_minus_1():
@@ -232,6 +242,15 @@ def test_working_day_31_total_ot_93_late_day_1():
   working_day = 31
   total_ot = 93
   late_day = 1
+  expected_result = 16120
+  actual_result = calculate_salary(working_day, total_ot, late_day)
+  assert expected_result == actual_result
+
+@pytest.mark.display
+def test_working_day_31_total_ot_93_late_day_31():
+  working_day = 31
+  total_ot = 93
+  late_day = 31
   expected_result = 16120
   actual_result = calculate_salary(working_day, total_ot, late_day)
   assert expected_result == actual_result
