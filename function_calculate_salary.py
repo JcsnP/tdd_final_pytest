@@ -14,6 +14,8 @@
 def validate_input(working_day, total_ot, late_day):
   # if input is str
   if type(working_day) == int and type(total_ot) == int and type(late_day) == int:
+    if working_day < 0 and total_ot < 0 and late_day < 0:
+      return "all input are invalid"
     # if total ot more than working hour
     if working_day > 31 or working_day < 0:
       return "invalid day"
@@ -23,8 +25,6 @@ def validate_input(working_day, total_ot, late_day):
       return "invalid late day"
     elif total_ot > working_day * 3:
       return "number of OTs above threshold per day"
-    elif working_day == 0 and total_ot == 0:
-      return "invalid all inputs"
     else:
       return True
   else:
